@@ -5,4 +5,4 @@ En la carpeta 'Host' hay un archivo de configuración de Vagrant para crear una 
 
 En la carpeta 'servidores' hay un archivo de configuración de Vagrant para crear 2 máquinas CentOS7. Repitiendo la estructura se pueden llegar a crear más.
 
-Todas las configuraciones de las máquinas son configurables.
+Todas las propiedades de las máquinas son configurables.
