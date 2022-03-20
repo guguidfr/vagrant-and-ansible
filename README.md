@@ -1,4 +1,4 @@
-# vagrant-and-ansible
+# vagrant-setup
 Vagrantfiles para crear varias máquinas virtuales con VirtualBox.
 
 En la carpeta 'Host' hay un archivo de configuración de Vagrant para crear una máquina con Debian 10. Esta la uso como nodo gestor.
