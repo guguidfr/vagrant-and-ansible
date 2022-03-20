@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.define "host" do |host|
+    host.vm.box = "debian/buster64"
+    host.vm.hostname = "DebianHost"
+    #host.vm.box_url = "centos/7"
+    host.vm.network :public_network, ip: "192.168.1.30"
+    host.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--ioapic", "on"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--name", "Host"]
+      v.customize ["modifyvm", :id, "--memory", 2048]
+      v.customize ["modifyvm", :id, "--cpus", 1]
+    end
+    $COMMANDS = <<-'BLOCK'
+    sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+    sudo systemctl restart sshd;
+    BLOCK
+    config.vm.provision "shell", inline: $COMMANDS
+  end
+
+end
